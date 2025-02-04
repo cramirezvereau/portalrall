@@ -2,7 +2,7 @@
 
 import MapaPeru from './components/MapaPeru.vue'; //componente que contiene el Mapa del Peru para PACS
 
-import HeaderRall from './components/HeaderRall.vue'; //componente que contiene la cabecera lamada 'Header'
+import HeaderRall from './components/HeaderRall.vue'; //componente que contiene la cabecera llamada 'Header'
 
 //Utilidades reactivas y hook
 import { ref, onMounted, onBeforeUnmount } from 'vue';
