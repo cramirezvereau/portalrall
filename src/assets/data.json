@@ -1,0 +1,23 @@
+{
+    "hospitales": [
+      {
+        "id": 1,
+        "nombre": "Hospital Regional de Trujillo",
+        "anexos": [
+          { "numero": 2100, "descripcion": "Oficina de Informática" },
+          { "numero": 2101, "descripcion": "Recepción" },
+          { "numero": 2102, "descripcion": "Emergencias" }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "Hospital Belén",
+        "anexos": [
+          { "numero": 2103, "descripcion": "Administración" },
+          { "numero": 2104, "descripcion": "Farmacia" },
+          { "numero": 2105, "descripcion": "Pediatría" }
+        ]
+      }
+    ]
+  }
+  
