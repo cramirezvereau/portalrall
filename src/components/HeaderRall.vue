@@ -13,12 +13,14 @@
     const isFormatosOpen = ref(false); // Controla si el menú "Formatos" está abierto
     const isTransparenciaOpen = ref(false); // Controla si el menú "Transparencia" está abierto
     const isPACsOpen = ref(false); // Controla si el menú "PACs" está abierto
+    const isAnexosOpen = ref(false); // Nuevo estado para controlar el modal de Anexos
 
 //para contadores de tiempo
     let menuTimer = null; 
     let formatosTimer = null; 
     let transparenciaTimer = null; 
     let PACsTimer = null;
+    let anexosTimer = null;
 
 // Emitir eventos
     const emit = defineEmits(['link-clicked']); //Define un evento llamado link-clicked
@@ -65,6 +67,22 @@
         clearTimeout(menuTimer);
     }
     };
+
+    // Función para alternar el modal de Anexos
+    const toggleAnexos = (event) => {
+     event.stopPropagation();
+     isAnexosOpen.value = !isAnexosOpen.value;
+     resetTimer();
+
+     if (isAnexosOpen.value) {
+       startTimer();
+       // Cerrar otros menús
+       isMenuOpen.value = false;
+       isFormatosOpen.value = false;
+       isTransparenciaOpen.valuwe = false;
+       isPACsOpen.value = false;
+     }
+   };
 
     // Función para alternar el transparencia
     const toggleTransparencia = (event) => {
@@ -127,6 +145,10 @@
     PACsTimer = setTimeout(() => { // cambio
         isPACsOpen.value = false;
     }, 15000); //10 segundos
+
+    anexosTimer = setTimeout(() => {
+        isAnexosOpen.value = false;
+    }, 15000);
     };
 
 //para timer
@@ -144,6 +166,10 @@
         clearTimeout(PACsTimer);
         startTimer();
     }
+    else if (isAnexosOpen.value) {
+        clearTimeout(anexosTimer);  
+        startTimer();
+    }
     };
 
 //Cerrar menús al hacer clic fuera
@@ -152,13 +178,15 @@
     const formatosElement = document.querySelector('.formatos-dropdown');
     const transparenciaElement = document.querySelector('.transparencia-dropdown');
     const PACsElement = document.querySelector('.pacs-dropdown');
+    const AnexosElement = document.querySelector('.anexos-dropdown');
 
     // Evitar cerrar si el clic ocurrió dentro de los menús
     if (
         (menuElement && menuElement.contains(event.target)) ||
         (formatosElement && formatosElement.contains(event.target)) ||
         (transparenciaElement && transparenciaElement.contains(event.target))||
-        (PACsElement && PACsElement.contains(event.target))
+        (PACsElement && PACsElement.contains(event.target)) ||
+        (AnexosElement && AnexosElement.contains(event.target))
     ) {
         return;
     }
@@ -168,6 +196,7 @@
     isFormatosOpen.value = false;
     isTransparenciaOpen.value = false;
     isPACsOpen.value = false;
+    isAnexosOpen.value = false;
     };
 
 // Opcional: Cambiar el cursor
@@ -301,14 +330,23 @@
                         </a>
                     </li> FIN DE CONFIGURACION 'PACS' -->
 
-                    <li class="nav-item">
+                    <li id="pacs-dropdown" class="nav-item" >
                         <a class="nav-link active" 
                             type="button" data-bs-toggle="offcanvas" 
-                            data-bs-target="#staticBackdrop" 
+                            data-bs-target="#MapaPeru-dropdown" 
                             aria-controls="staticBackdrop">
                             PACS
                         </a>
-                    </li> 
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" 
+                            type="button" data-bs-toggle="offcanvas" 
+                            data-bs-target="#AnexosLista-dropdown" 
+                            aria-controls="staticBackdrop">
+                            ANEXOS
+                        </a>
+                    </li>
 
                     <!-- INICIO DE CONFIGURACION 'Convocatorias' -->
                     <li class="nav-item">
@@ -963,6 +1001,10 @@
 
     </div><!--  FIN DE OPCIONES DE 'Transparencia'  -->
     
+</div>
+
+<div v-if="isAnexosOpen" class="anexos-modal">
+    <AnexosLista @close="isAnexosOpen = false" />
 </div>
 
 </header>

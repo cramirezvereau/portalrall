@@ -1,6 +1,7 @@
 <script setup>
 
 import MapaPeru from './components/MapaPeru.vue'; //componente que contiene el Mapa del Peru para PACS
+import AnexosLista from './components/AnexosLista.vue';
 
 import HeaderRall from './components/HeaderRall.vue'; //componente que contiene la cabecera llamada 'Header'
 
@@ -167,10 +168,10 @@ onMounted(() => {
   
   </div> <!-- cierrre de la clase 'all' -->
 
-  <!--Contenedor de modal pantalla completa-->
+  <!--VISTA DE PACS -->
   <div class="offcanvas offcanvas-start full-screen-offcanvas" 
       data-bs-backdrop="static" 
-      tabindex="-1" id="staticBackdrop" 
+      tabindex="-1" id="MapaPeru-dropdown" 
       aria-labelledby="staticBackdropLabel">
 
       <div class="offcanvas-header">
@@ -189,6 +190,33 @@ onMounted(() => {
                 <div><!--
                     This offcanvas now occupies the entire screen.-->
                     <MapaPeru> </MapaPeru>
+                </div>
+              </div>
+            </div>
+  </div>
+
+    <!--VISTA DE ANEXOS HOSPITALES -->
+    <div class="offcanvas offcanvas-start full-screen-offcanvas" 
+      data-bs-backdrop="static" 
+      tabindex="-1" id="AnexosLista-dropdown" 
+      aria-labelledby="staticBackdropLabel">
+
+      <div class="offcanvas-header">
+              
+        <h3 class="offcanvas-title" id="staticBackdropLabel">Lita de anexos hospitales ESSALUD La Libertad</h3>
+          <button type="button" 
+                  class="btn-close" 
+                  data-bs-dismiss="offcanvas" 
+                  aria-label="Close">
+          </button>
+
+          </div>
+    
+            <div class="contentview">
+              <div class="offcanvas-body">
+                <div><!--
+                    This offcanvas now occupies the entire screen.-->
+                    <AnexosLista> </AnexosLista>
                 </div>
               </div>
             </div>
