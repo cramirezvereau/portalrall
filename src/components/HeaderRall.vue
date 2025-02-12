@@ -870,12 +870,20 @@
             class="submenu-link">
             Formato Convenio y Vacaciones 
             </a>
-
+            <!--
             <a href="http://10.15.4.180:8080/sgper/link/formatos/papeleta" 
             target="_blank"
             @click="linkClicked('Formato Papeletas de Permiso ', 'http://oasprod.essalud.gob.pe:7777/acreditap/')"
             class="submenu-link">
             Formato Papeletas de Permiso 
+            </a>-->
+            
+            <!-- PRUEBA DE FORMATO DE PAPELETEAS-->
+            <a class="nav-link active" 
+                type="button" data-bs-toggle="offcanvas" 
+                data-bs-target="#staticBackdrop2" 
+                aria-controls="staticBackdrop">
+                Formato Papeletas de Permiso
             </a>
 
         </div> <!--  FIN DE SUB MENU 'Recursos Humanos'  -->

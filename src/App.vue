@@ -5,6 +5,9 @@ import AnexosLista from './components/AnexosLista.vue';
 
 import HeaderRall from './components/HeaderRall.vue'; //componente que contiene la cabecera llamada 'Header'
 
+import PapeletaRall from './components/PapeletaRall.vue';
+
+
 //Utilidades reactivas y hook
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
@@ -222,6 +225,33 @@ onMounted(() => {
             </div>
   </div>
 
+  <!--Prueba para el FORMATO DE PAPELETAS-->
+  <div class="offcanvas offcanvas-start full-screen-offcanvas" 
+      data-bs-backdrop="static" 
+      tabindex="-1" id="staticBackdrop2" 
+      aria-labelledby="staticBackdropLabel">
+
+      <div class="offcanvas-header">
+              
+        <h3 class="offcanvas-title" id="staticBackdropLabel">Formato de Papeletas</h3>
+          <button type="button" 
+                  class="btn-close" 
+                  data-bs-dismiss="offcanvas" 
+                  aria-label="Close">
+          </button>
+
+          </div>
+    
+            <div class="contentviewPAPELETAS">
+              <div class="offcanvas-body">
+                <div><!--
+                    This offcanvas now occupies the entire screen.-->
+                    <PapeletaRall> </PapeletaRall>
+                </div>
+              </div>
+            </div>
+  </div>
+
 </template>
 
 <style scoped>
@@ -381,6 +411,18 @@ button{
 
 /* estilo del contenedor de del mapa*/
 .contentview {
+  display: flex;
+  justify-content: flex;
+  align-items: flex;
+  flex-grow: 1;
+  width: flex;
+  max-width: flex;
+  padding:10px;
+  background-color: #87CEEB;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contentviewPAPELETAS {
   display: flex;
   justify-content: flex;
   align-items: flex;
